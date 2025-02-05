@@ -1,4 +1,4 @@
-# C23-111-webpack
+# C23-111-webapp
 - Un proyecto diseñado para encontrar recetas basadas en los ingredientes que tienes más cerca, transformando lo disponible en deliciosas creaciones.
 
 ## Problematica
