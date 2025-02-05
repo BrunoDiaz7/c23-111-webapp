@@ -3,7 +3,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { RecipeProvider } from "@/context/recipeContext";
 import { AuthProvider } from "@/context/authContext";
 import { CircularProgress, CssBaseline } from "@mui/material";
-import { ScreenSizeWarning } from "@/Components";
+import { ScreenSizeWarning, ProgressBar } from "@/Components";
 import theme from "@/theme/theme";
 import "@/styles/globals.css";
 import { ToastContainer } from "react-toastify";
@@ -31,6 +31,7 @@ export default function RootLayout({
                             }
                         >
                             <AuthProvider>
+                                <ProgressBar />
                                 {children}
                                 <ScreenSizeWarning />
                             </AuthProvider>
