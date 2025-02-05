@@ -43,7 +43,8 @@ export default function Home() {
         <Grid
           container
           spacing={2}
-          className="grid grid-cols-[20rem_1fr]  w-screen h-screen"
+          sx={{display:'grid', gridTemplateColumns: '20rem 1fr', width: '100vw', height: '100vh'}}
+          // className="grid grid-cols-[20rem_1fr]  w-screen h-screen"
         >
           <SideBar />
 
