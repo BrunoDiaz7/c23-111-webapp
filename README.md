@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# C23-111-webapp
+- Un proyecto diseñado para encontrar recetas basadas en los ingredientes que tienes más cerca, transformando lo disponible en deliciosas creaciones.
 
-## Getting Started
+## Problematica
+- A menudo no sabemos qué receta preparar con los ingredientes que ya tenemos en casa, lo que genera desperdicio de alimentos o falta de creatividad al cocinar.
+- Además, en muchas ocasiones nos encontramos con la necesidad de realizar una receta específica pero nos faltan ingredientes o el presupuesto necesario para adquirirlos.
 
-First, run the development server:
+## Tecnologias
+[![My Skills](https://skillicons.dev/icons?i=typescript,nextjs,mui,nodejs,expressjs,postman,mongodb&perline=7)](https://skillicons.dev)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Variables de entorno
+```ts
+// .env client
+NEXT_PUBLIC_API_URL
+```
+```ts
+// .env server
+PORT
+HOST
+CORS_ORIGIN
+MONGO_URI
+CLOUDINARY_CLOUD_NAME
+CLOUDINARY_API_KEY
+CLOUDINARY_API_SECRET
+JWT_SECRET
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Equipo de trabajo
+- [Antonio Navarro](https://www.linkedin.com/in/antonio-navarro-b16303164/)
+- [Bruno Diaz](https://www.linkedin.com/in/brunoleandrodiaz/)
+- [Dulce Nevarez](https://www.linkedin.com/in/dulce-nevarez-castorena-396757269/)
+- [Juan Ramirez](https://www.linkedin.com/in/juan-ramirez-490b84271/)
+- [Leandro Schugurensky](https://www.linkedin.com/in/leanschugu/)
