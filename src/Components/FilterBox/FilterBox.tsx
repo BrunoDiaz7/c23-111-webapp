@@ -9,13 +9,14 @@ const TagsStyle = styled(Box)`
     flex-wrap: wrap;
     gap: 0px 6px;
     padding: 12px;
-    marginTop: 20px
+    margin-top: 20px
 `;
 
 const ChipStyle = styled(Chip)`
     border-color: ${theme.palette.primary.main};
     color: ${theme.palette.primary.main};
     padding: 0px 10px;
+    margin-top: 20px
 `;
 
 const StyledCardHeader = styled(Box)`
@@ -127,7 +128,7 @@ export const FilterBox: React.FC<FilterBoxProps> = ({
                     {visibleItems.map((item) => (
                         <ChipStyle
                             key={item}
-                            className="mt-5"
+                            // className="mt-5"
                             variant={
                                 selectedIngredients.includes(item) ||
                                 selectedCategories.includes(item)
