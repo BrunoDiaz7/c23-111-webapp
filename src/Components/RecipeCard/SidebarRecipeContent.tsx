@@ -69,19 +69,7 @@ export const SidebarRecipeContent: React.FC<{
       toast.error(`Ocurrio un error al editar la receta ${error}`);
     }
   };
-  // const deleteRecipe = async () => {
-  //     try {
-  //         const { data } = await privateInstance(`/recipes/${_id}`, {
-  //             method: "delete",
-  //         });
-  //         if (updateRecipes) await updateRecipes();
-  //         console.log(data);
-  //         toast.success("Receta rechazada");
-  //     } catch (error) {
-  //         toast.error("Ocurrio un error al eliminar la receta");
-  //         console.log(error);
-  //     }
-  // };
+
   const { isAuthenticated } = useAuth();
   const [rating, setRating] = useState(rateAverage);
   const pathname = usePathname();

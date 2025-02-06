@@ -153,6 +153,7 @@ export const FilterBox: React.FC<FilterBoxProps> = ({
                             "&:hover": {
                                 color: theme.palette.primary.main, // Cambia el color del texto al hover
                             },
+                            marginTop: '20px'
                         }}
                         className="mt-5"
                         variant="outlined"
