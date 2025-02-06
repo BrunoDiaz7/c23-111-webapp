@@ -67,7 +67,7 @@ export default function AdminPage() {
                                 return (
                                     <Grid
                                         key={recipe.id}
-                                        size={{ lg: 5, md: 7, xl: 8 }}
+                                        size={{ lg: 5, md: 7 }}
                                     >
                                         <RecipeCard
                                             sx={{ margin: "2% 0" }}
