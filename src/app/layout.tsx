@@ -17,7 +17,8 @@ export default function RootLayout({
     return (
         <html lang="es">
             <head>
-                <title>Recetario</title>
+                <title>Food Finder</title>
+                <link rel='icon' href="/logo.png"></link>
             </head>
             <ThemeProvider theme={theme}>
                 <RecipeProvider>
