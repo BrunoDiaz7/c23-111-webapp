@@ -9,14 +9,14 @@ const TagsStyle = styled(Box)`
     flex-wrap: wrap;
     gap: 0px 6px;
     padding: 12px;
-    margin-top: 20px
+    margin-top: 20px;
 `;
 
 const ChipStyle = styled(Chip)`
     border-color: ${theme.palette.primary.main};
     color: ${theme.palette.primary.main};
     padding: 0px 10px;
-    margin-top: 20px
+    margin-top: 20px;
 `;
 
 const StyledCardHeader = styled(Box)`
@@ -155,7 +155,6 @@ export const FilterBox: React.FC<FilterBoxProps> = ({
                             "&:hover": {
                                 color: theme.palette.primary.main, // Cambia el color del texto al hover
                             },
-                            marginTop: '20px'
                         }}
                         className="mt-5"
                         variant="outlined"
