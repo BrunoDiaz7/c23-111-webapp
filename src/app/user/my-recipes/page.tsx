@@ -63,7 +63,7 @@ const UserPage = () => {
       ) : (
         <Grid container spacing={2} className="flex justify-center mt-15">
           {userRecipes?.map((recipe) => (
-            <Grid key={recipe._id} size={{ lg: 5, md: 7 }}>
+            <Grid key={recipe._id} size={{ lg: 5, md: 7, xl: 8 }}>
               <RecipeCard
                 recipe={recipe}
                 _id={recipe._id}
