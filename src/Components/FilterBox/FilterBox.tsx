@@ -9,6 +9,7 @@ const TagsStyle = styled(Box)`
     flex-wrap: wrap;
     gap: 0px 6px;
     padding: 12px;
+    marginTop: 20px
 `;
 
 const ChipStyle = styled(Chip)`
