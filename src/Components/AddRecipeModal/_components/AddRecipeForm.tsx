@@ -69,7 +69,7 @@ export const AddRecipeForm = () => {
 
       try {
         setLoading(true);
-        const response = await fetch(`${BASE_URL}/recipes`, {
+        const response = await fetch(`${BASE_URL}recipes`, {
           method: "POST",
           body: formData,
           headers: {
