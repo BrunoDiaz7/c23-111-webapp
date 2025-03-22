@@ -8,7 +8,7 @@ const StyledContainer = styled(Container)({
     display: "flex",
     flexDirection: "column",
     textAlign: "center",
-    margin: "10% 0",
+    margin: "10% 0 0 0",
     alignItems: "center",
 });
 export const EmptyRecipesContainer = () => {

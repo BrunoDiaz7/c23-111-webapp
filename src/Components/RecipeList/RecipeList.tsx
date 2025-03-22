@@ -84,7 +84,7 @@ export const RecipeList = () => {
 
             {partialMatchRecipes.length > 0 && (
                 <>
-                    <Typography className="py-4" variant="h4">
+                    <Typography sx={{textAlign: "center"}} variant="h4">
                         También puedes intentar con estas recetas (contiene alguno de los ingredientes seleccionados):
                     </Typography>
                     {partialMatchRecipes.map((recipe) => (

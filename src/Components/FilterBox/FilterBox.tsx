@@ -1,5 +1,5 @@
 "use client";
-import { Box, Card, Chip, Divider, styled, Typography } from "@mui/material";
+import { Box, Card, Chip, Divider, styled, Typography,  } from "@mui/material";
 import theme from "@/theme/theme";
 import { useRecipeContext } from "@/context/recipeContext";
 
@@ -9,7 +9,6 @@ const TagsStyle = styled(Box)`
     flex-wrap: wrap;
     gap: 0px 6px;
     padding: 12px;
-    margin-top: 20px;
 `;
 
 const ChipStyle = styled(Chip)`
@@ -24,7 +23,7 @@ const StyledCardHeader = styled(Box)`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px
 `;
 
 const StyledTextHeader = styled(Box)`
@@ -98,7 +97,7 @@ export const FilterBox: React.FC<FilterBoxProps> = ({
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    maxWidth: "90%",
+                    width: "100%",
                     py: 1,
                     borderRadius: 2,
                     boxShadow: "none",
@@ -107,7 +106,7 @@ export const FilterBox: React.FC<FilterBoxProps> = ({
                 <StyledCardHeader>
                     <Icon
                         sx={{
-                            fontSize: 70,
+                            fontSize: 65,
                             color: "primary.main",
                             backgroundColor: "secondary.main",
                             borderRadius: "50%",
@@ -128,7 +127,6 @@ export const FilterBox: React.FC<FilterBoxProps> = ({
                     {visibleItems.map((item) => (
                         <ChipStyle
                             key={item}
-                            // className="mt-5"
                             variant={
                                 selectedIngredients.includes(item) ||
                                 selectedCategories.includes(item)
@@ -193,7 +191,6 @@ export const FilterBox: React.FC<FilterBoxProps> = ({
                     )}
                 </TagsStyle>
             </Card>
-            <Divider />
         </>
     );
 };

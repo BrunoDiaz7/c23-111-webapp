@@ -16,7 +16,7 @@ import { SelectInput } from "./SelectInput/SelectInput";
 import { AddRecipeModal } from "./AddRecipeModal/AddRecipe.Modal";
 import { ArrayInput } from "./ArrayInput/ArrayInput";
 import { BackButton } from "./BackButton/BackButton";
-
+import { MobileFilter } from "./MobileFilter/MobileFilter"
 
 
 export {
@@ -37,5 +37,6 @@ export {
   SelectInput,
   AddRecipeModal,
   ArrayInput,
-  BackButton
+  BackButton,
+  MobileFilter
 };

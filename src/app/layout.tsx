@@ -33,7 +33,7 @@ export default function RootLayout({
                         >
                             <AuthProvider>
                                 {children}
-                                <ScreenSizeWarning />
+                            {/*   <ScreenSizeWarning /> */}
                             </AuthProvider>
                             <ToastContainer />
                         </Suspense>

@@ -27,7 +27,7 @@ const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 600,
+      sm: 800,
       md: 1024,
       lg: 1500,
       xl: 1800,
@@ -45,7 +45,7 @@ const customTypography = {
     color: theme.palette.primary.main,
     fontWeight: 700,
     [theme.breakpoints.down("md")]: {
-      fontSize: pxToRem(40),
+      fontSize: pxToRem(35),
     },
   },
   h2: {
@@ -53,7 +53,7 @@ const customTypography = {
     color: "#000",
     fontWeight: 500,
     [theme.breakpoints.down("md")]: {
-      fontSize: pxToRem(30),
+      fontSize: pxToRem(25),
     },
   },
   h3: {
@@ -61,7 +61,7 @@ const customTypography = {
     color: "#000",
     fontWeight: 700,
     [theme.breakpoints.down("md")]: {
-      fontSize: pxToRem(26),
+      fontSize: pxToRem(20),
     },
   },
   h4: {
@@ -69,7 +69,8 @@ const customTypography = {
     color: "#000000",
     fontWeight: 700,
     [theme.breakpoints.down("md")]: {
-      fontsize: pxToRem(20),
+      fontsize: pxToRem(10),
+      fontWeight: 500
     },
   },
   body1: {
@@ -85,7 +86,7 @@ const customTypography = {
     color: "#000",
     fontWeight: 400,
     [theme.breakpoints.down("md")]: {
-      fontSize: pxToRem(20),
+      fontSize: pxToRem(10),
     },
   },
   caption:{

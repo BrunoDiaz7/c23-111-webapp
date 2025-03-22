@@ -1,15 +1,17 @@
 "use client";
-import { RecipeList, SideBar, Header, MainLoader } from "@/Components";
-import { Typography, Box } from "@mui/material";
+import { RecipeList, SideBar, Header, MainLoader, MobileFilter } from "@/Components";
+import { Typography, Box, useMediaQuery, Theme } from "@mui/material";
 import { getAllRecipes } from "@/services/recipes";
 import { useEffect, useState } from "react";
 import { useRecipeContext } from "@/context/recipeContext";
 import Grid from "@mui/material/Grid2";
+import theme from "@/theme/theme";
 
 export default function Home() {
   const { loadRecipes, setIngredients, setCategories, setRecipes } =
     useRecipeContext();
   const [loading, setLoading] = useState(false);
+  const isMobile = useMediaQuery<Theme>(() => theme.breakpoints.down("sm"))
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -24,7 +26,7 @@ export default function Home() {
           setRecipes(JSON.parse(cachedRecipes));
           return;
         }
-        const response = await getAllRecipes();
+        const response: any = await getAllRecipes();
         const data = await response.data.result;
         loadRecipes(data);
       } catch (error) {
@@ -43,17 +45,22 @@ export default function Home() {
         <Grid
           container
           spacing={2}
-          sx={{display:'grid', gridTemplateColumns: '20rem 1fr', width: '100vw', height: '100vh'}}
-          // className="grid grid-cols-[20rem_1fr]  w-screen h-screen"
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "20rem 1fr",
+            [theme.breakpoints.down("sm")]: { gridTemplateColumns: "0 auto" },
+            columnGap: 0,
+            width: "100%",
+            height: "100vh",
+          }}
         >
-          <SideBar />
+            <SideBar />
 
           <Grid
             component="main"
             sx={{
               display: "flex",
               flexDirection: "column",
-              maxWidth: "100%",
               width: "100%",
             }}
           >
@@ -72,6 +79,9 @@ export default function Home() {
                 Usa las etiquetas o el buscador para encontrar lo que necesitas.
               </Typography>
 
+              {isMobile && (
+                <MobileFilter />
+              )}
               <Box
                 component="section"
                 className="flex flex-col items-center justify-center w-full"

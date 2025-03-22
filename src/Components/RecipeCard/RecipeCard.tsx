@@ -8,12 +8,15 @@ import {
   Rating,
   styled,
   Drawer,
+  useMediaQuery,
+  Theme
 } from "@mui/material";
 import { useState } from "react";
 import { SidebarRecipeContent } from "./SidebarRecipeContent";
 import { getRatesById, getRecipeById } from "@/services/recipes";
 import { recipe, recipeWithRates } from "@/types/recipes";
 import { usePathname } from "next/navigation";
+import theme from "@/theme/theme";
 
 type RecipeCardProps = {
   recipe: recipe;
@@ -25,15 +28,18 @@ type RecipeCardProps = {
 
 const StyledCardContent = styled(CardContent)({
   display: "flex",
-  gap: "15px",
-  padding: "5px 12px",
+  flexDirection: "column",
+  flex: "1 0 auto",
 });
 
 const StyledCard = styled(Card)({
   display: "flex",
   alignItems: "space-between",
   backgroundColor: "#ffffff",
-  minHeight: "200px",
+  height: "90%",
+  [theme.breakpoints.down("sm")]: {
+    height: "150px"
+  },
   margin: "5%",
   cursor: "pointer",
   transition:
@@ -51,6 +57,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
   _id,
   updateRecipes,
 }) => {
+    const isMobile = useMediaQuery<Theme>(() => theme.breakpoints.down("sm"))
   const [open, setOpen] = useState(false);
   const [recipeData, setRecipeData] = useState<recipeWithRates>();
   const [ratesData, setRatesData] = useState([]);
@@ -73,15 +80,15 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
     missingIngredient,
   } = recipe;
 
-const backColor = (status: string | undefined) => {
-    if(status === 'approved') {
-        return '#7bd76b'
-    } else if (status === 'pending') {
-        return '#f48e28'
+  const backColor = (status: string | undefined) => {
+    if (status === "approved") {
+      return "#7bd76b";
+    } else if (status === "pending") {
+      return "#f48e28";
     } else {
-        return "#FE645E"
+      return "#FE645E";
     }
-}
+  };
 
   const getRecipeData = async (id: string | undefined) => {
     const response = await getRecipeById(id);
@@ -114,12 +121,19 @@ const backColor = (status: string | undefined) => {
           }
         }}
         sx={{
-          maxWidth: "100%",
+          width: "100%",
           ...sx,
         }}
       >
         <CardMedia
-          sx={{ width: "250px", height: "250px", objectFit: "cover" }}
+          sx={{
+            width: "40%",
+            height: "auto",
+            [theme.breakpoints.down("md")]: {
+              width: "35%",
+              maxHeight: "200px"
+            }
+          }}
           component="img"
           image={image}
           alt="imagen ilustrativa"
@@ -130,15 +144,14 @@ const backColor = (status: string | undefined) => {
             flexDirection: "column",
             justifyContent: "center",
             width: "100%",
-            padding: "10px",
           }}
         >
-          <StyledCardContent className="flex flex-col">
-            <Box className="flex  justify-between">
+          <StyledCardContent>
+            <Box className="flex flex-col">
               <Typography variant="h4">{name}</Typography>
               {missingIngredient?.length && missingIngredient.length > 0 && (
                 <Typography variant="body2" sx={{ color: "red" }}>
-                  Te faltan: {missingIngredient?.length} ingredientes
+                  faltan: {missingIngredient?.length} ingredientes
                 </Typography>
               )}
               {(pathname === "/admin" || pathname === "/user/my-recipes") && (
@@ -156,19 +169,27 @@ const backColor = (status: string | undefined) => {
               )}
 
               {pathname === "/" && (
-                <Box className="flex gap-2">
-                 ({totalRates}) <Rating readOnly value={rateAverage} precision={0.5} />
-                  {totalRates === 0 ? "Sin calificar" : rateAverage.toFixed(1)}
+                <Box className="flex gap-1">
+                  ({totalRates}){" "}
+                  <Rating sx={{[theme.breakpoints.down("md")]: {fontSize: 15}}} readOnly value={rateAverage} precision={0.5} />
+                  {totalRates === 0 ? "" : rateAverage.toFixed(1)}
                 </Box>
               )}
             </Box>
-            <StyledCardContent sx={{ padding: "0" }}>
-              <Typography variant="caption">📋 {totalSteps} pasos</Typography>
-              <Typography variant="caption">
-                🍴 {ingredients.length} ingredientes
-              </Typography>
-            </StyledCardContent>
-            <CardContent sx={{ padding: "10px 0" }}>
+            {isMobile ? 
+              null
+              :
+              (
+                <StyledCardContent sx={{ padding: "0" }}>
+                <Typography variant="caption">📋 {totalSteps} pasos</Typography>
+                <Typography variant="caption">
+                  🍴 {ingredients.length} ingredientes
+                </Typography>
+              </StyledCardContent>
+              )
+            }
+
+            <CardContent sx={{ padding: "5px 0", [theme.breakpoints.down("sm")]: {padding: 0} }}>
               <Typography variant="body1">{description}</Typography>
             </CardContent>
           </StyledCardContent>
@@ -180,10 +201,12 @@ const backColor = (status: string | undefined) => {
         anchor="right"
         sx={{
           width: 500,
+          maxWidth: "100%",
           flexShrink: 0,
           my: 2,
           "& .MuiDrawer-paper": {
             width: 500,
+            maxWidth: "100%",
             boxSizing: "border-box",
           },
         }}
@@ -192,6 +215,7 @@ const backColor = (status: string | undefined) => {
           <SidebarRecipeContent
             prop={{
               ...recipeData,
+              isOpen: open,
               rates: ratesData,
               updateRates: getRatesData,
               updateRecipes: handleUpdateRecipes,

@@ -2,12 +2,17 @@ import { Autocomplete, TextField, Chip, Stack } from "@mui/material";
 import { useRecipeContext } from "@/context/recipeContext";
 import theme from "@/theme/theme";
 
-export const SearchBar = () => {
+type SearchbarProps = {
+    sx?: object
+}
+
+export const SearchBar: React.FC<SearchbarProps> = ({sx}) => {
     const { ingredients, setSelectedIngredients } = useRecipeContext();
 
     return (
-        <Stack spacing={3} sx={{ width: "100%" }}>
+        <Stack spacing={3} sx={{ width: "100%"}}>
             <Autocomplete
+            sx={sx}
                 multiple
                 options={ingredients}
                 onChange={(event, value) => setSelectedIngredients(value)}
@@ -35,7 +40,6 @@ export const SearchBar = () => {
                     <TextField
                         {...params}
                         label="Ingresar ingredientes"
-                        placeholder="Busca tus ingredientes"
                     />
                 )}
             />
