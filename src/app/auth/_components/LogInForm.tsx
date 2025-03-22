@@ -7,22 +7,23 @@ import Image from "next/image";
 import { useAuth } from "@/context/authContext";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import theme from "@/theme/theme";
 
 const FormBox = styled(Grid)({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-around",
-  height: "600px",
+  height: "100%",
   backgroundColor: "#ffff",
   borderRadius: "10px",
   boxShadow: "14px 11px 14px -3px rgba(0,0,0,0.62)",
-  width: "1150px",
+  width: "100%",
 });
 
 const FrameBox = styled(Box)({
   display: "flex",
-  height: "300px",
-  width: "300px",
+  height: "250px",
+  width: "250px",
   alignItems: "center",
   justifyContent: "center",
   backgroundColor: "#ffffff",
@@ -53,20 +54,23 @@ export const LogInForm: React.FC = () => {
     },
   });
   return (
-    <FormBox container spacing={2}>
+    <FormBox container spacing={{sm: 1, md:2}}>
       <Grid
         sx={{
           display: "flex",
           flexDirection: "column",
           gap: "20px",
           alignItems: "center",
+          [theme.breakpoints.down("md")]: {
+            gap: "15px"
+          }
         }}
-        size={6}
+        size={{sm: 12, md: 6}}
         component={"div"}
       >
         <>
           <Typography
-            sx={{ marginTop: "5%", textAlign: "center" }}
+            sx={{ marginTop: "3%", textAlign: "center" }}
             variant="h1"
           >
             ¡Bienvenido!
@@ -76,7 +80,7 @@ export const LogInForm: React.FC = () => {
         <Form sx={{ width: "60%" }} fields={logInfields} formik={formik}>
           <CommonButton
             text="Iniciar sesión"
-            buttonSize="medium"
+            buttonSize="small"
             variant="contained"
             fontWeight={600}
             type="submit"
@@ -93,8 +97,11 @@ export const LogInForm: React.FC = () => {
           justifyContent: "center",
           alignItems: "center",
           width: "47%",
+          [theme.breakpoints.down("md")]: {
+            display: "none"
+          }
         }}
-        size={5}
+        size={{sm: 0, md: 5}}
         component={"div"}
       >
         <FrameBox>

@@ -19,7 +19,7 @@ const PageContainer = styled(Container)({
 });
 
 const StyledNav = styled("nav")({
-    margin: "7%",
+    margin: "5%",
 });
 
 const TabsContainer = styled("ul")({
@@ -56,10 +56,9 @@ const AuthPage: React.FC = () => {
                 startIcon={<ArrowBackRoundedIcon />}
                 clickHandler={() => router.push("/")}
                 sx={{
-                    mt: "12px",
                     position: "absolute",
-                    top: "100px",
-                    left: "200px",
+                    top: "2%",
+                    left: "2%"
                 }}
             />
             <StyledNav>
@@ -112,7 +111,7 @@ const AuthPage: React.FC = () => {
                     {selectedForm === "Crear cuenta" && (
                         <motion.div
                             key="signUp"
-                            initial={{ x: -600, opacity: 0 }}
+                            initial={{ x: -600, opacity: 0, display: "flex" }}
                             animate={{ x: 0, opacity: 1 }}
                             exit={{ x: 600, opacity: 0 }}
                             transition={{ duration: 0.5 }}

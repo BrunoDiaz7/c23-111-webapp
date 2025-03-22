@@ -41,7 +41,7 @@ const theme = createTheme({
 
 const customTypography = {
   h1: {
-    fontSize: pxToRem(45),
+    fontSize: pxToRem(40),
     color: theme.palette.primary.main,
     fontWeight: 700,
     [theme.breakpoints.down("md")]: {
