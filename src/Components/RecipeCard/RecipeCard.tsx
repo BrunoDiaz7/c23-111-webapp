@@ -215,7 +215,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           <SidebarRecipeContent
             prop={{
               ...recipeData,
-              isOpen: open,
+              closeDrawer: closeDrawer,
               rates: ratesData,
               updateRates: getRatesData,
               updateRecipes: handleUpdateRecipes,

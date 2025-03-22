@@ -2,6 +2,7 @@ import {
   Avatar,
   Box,
   Button,
+  IconButton,
   Divider,
   List,
   ListItem,
@@ -22,6 +23,7 @@ import { commentFields } from "@/app/auth/_utils/fields/fields";
 import { useAuth } from "@/context/authContext";
 import { usePathname } from "next/navigation";
 import { privateInstance } from "@/services/axios";
+import CancelIcon from '@mui/icons-material/Cancel';
 
 type RecipeCardProps = recipeWithRates;
 
@@ -40,6 +42,7 @@ export const SidebarRecipeContent: React.FC<{
     updateRates: (id: string) => void;
     updateRecipes?: () => void;
     isAdmin?: boolean;
+    closeDrawer?: () => void
   };
 }> = ({ prop }) => {
   const {
@@ -47,6 +50,7 @@ export const SidebarRecipeContent: React.FC<{
     steps,
     ingredients,
     description,
+    closeDrawer,
     image,
     rates,
     rateAverage,
@@ -121,6 +125,11 @@ export const SidebarRecipeContent: React.FC<{
   };
   return (
     <>
+    <IconButton
+    onClick={closeDrawer}
+    sx={{position: "absolute", top: 0, right:0}}>
+      <CancelIcon sx={{fontSize: 30}} />
+    </IconButton>
       <Box className="grid grid-cols-1 gap-y-4 p-0">
         <Image
           src={image}
