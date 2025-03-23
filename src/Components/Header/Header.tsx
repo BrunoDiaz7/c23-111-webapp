@@ -1,7 +1,5 @@
 "use client";
-
-import React, {  useCallback } from "react";
-import { CommonButton, UserAvatar, SideBar } from "@/Components";
+import { CommonButton, UserAvatar, } from "@/Components";
 import {
   styled,
   Box,
@@ -13,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
 import theme from "@/theme/theme";
 
-const StyledHeader = styled("header")(({ theme }) => ({
+const StyledHeader = styled("header")(() => ({
   display: "flex",
   padding: "25px",
   height: "128px",

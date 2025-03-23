@@ -1,5 +1,12 @@
 "use client";
-import { RecipeList, SideBar, Header, MainLoader, MobileFilter } from "@/Components";
+/* eslint-disable no-alert, @typescript-eslint/no-explicit-any */
+import {
+  RecipeList,
+  SideBar,
+  Header,
+  MainLoader,
+  MobileFilter,
+} from "@/Components";
 import { Typography, Box, useMediaQuery, Theme } from "@mui/material";
 import { getAllRecipes } from "@/services/recipes";
 import { useEffect, useState } from "react";
@@ -11,7 +18,7 @@ export default function Home() {
   const { loadRecipes, setIngredients, setCategories, setRecipes } =
     useRecipeContext();
   const [loading, setLoading] = useState(false);
-  const isMobile = useMediaQuery<Theme>(() => theme.breakpoints.down("sm"))
+  const isMobile = useMediaQuery<Theme>(() => theme.breakpoints.down("sm"));
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -26,7 +33,7 @@ export default function Home() {
           setRecipes(JSON.parse(cachedRecipes));
           return;
         }
-        const response: any = await getAllRecipes();
+        const response: any  = await getAllRecipes();
         const data = await response.data.result;
         loadRecipes(data);
       } catch (error) {
@@ -54,7 +61,7 @@ export default function Home() {
             height: "100vh",
           }}
         >
-            <SideBar />
+          <SideBar />
 
           <Grid
             component="main"
@@ -79,9 +86,7 @@ export default function Home() {
                 Usa las etiquetas o el buscador para encontrar lo que necesitas.
               </Typography>
 
-              {isMobile && (
-                <MobileFilter />
-              )}
+              {isMobile && <MobileFilter />}
               <Box
                 component="section"
                 className="flex flex-col items-center justify-center w-full"
