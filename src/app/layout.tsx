@@ -9,36 +9,35 @@ import { ToastContainer } from "react-toastify";
 import { Suspense } from "react";
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <html lang="es">
-            <head>
-                <title>Food Finder</title>
-                <link rel='icon' href="/logo.png"></link>
-            </head>
-            <ThemeProvider theme={theme}>
-                <RecipeProvider>
-                    <CssBaseline />
-                    <body>
-                        <Suspense
-                            fallback={
-                                <div className="h-screen w-screen flex justify-center items-center z-[5000] fixed">
-                                    <CircularProgress />
-                                </div>
-                            }
-                        >
-                            <AuthProvider>
-                                {children}
-                            {/*   <ScreenSizeWarning /> */}
-                            </AuthProvider>
-                            <ToastContainer />
-                        </Suspense>
-                    </body>
-                </RecipeProvider>
-            </ThemeProvider>
-        </html>
-    );
+  return (
+    <html lang="es">
+      <head>
+        <title>Food Finder</title>
+        <link rel="icon" href="/logo.png"></link>
+      </head>
+      <ThemeProvider theme={theme}>
+        <RecipeProvider>
+          <CssBaseline />
+          <body>
+            <Suspense
+              fallback={
+                <div className="h-screen w-screen flex justify-center items-center z-[5000] fixed">
+                  <CircularProgress />
+                </div>
+              }
+            >
+              <AuthProvider>
+                {children}
+              </AuthProvider>
+              <ToastContainer />
+            </Suspense>
+          </body>
+        </RecipeProvider>
+      </ThemeProvider>
+    </html>
+  );
 }

@@ -7,7 +7,7 @@ export type Option = {
     name: string;
     type: string;
     label: string;
-    placeholder?: string;
+    placeholder: string;
     columns: number;
     options?: Option[];
     multiline?: boolean;

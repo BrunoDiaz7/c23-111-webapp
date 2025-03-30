@@ -16,8 +16,12 @@ const FormBox = styled(Grid)({
   height: "100%",
   backgroundColor: "#ffff",
   borderRadius: "10px",
+  padding: "20px",
   boxShadow: "14px 11px 14px -3px rgba(0,0,0,0.62)",
   width: "100%",
+  [theme.breakpoints.down("md")]: {
+    marginTop: "7%"
+  }
 });
 
 const FrameBox = styled(Box)({

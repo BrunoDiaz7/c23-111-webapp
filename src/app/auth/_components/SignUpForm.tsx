@@ -18,6 +18,7 @@ const FormBox = styled(Grid)({
   maxWidth: "940px",
   backgroundColor: "#ffff",
   borderRadius: "10px",
+  padding: "20px",
   boxShadow: "14px 11px 14px -3px rgba(0,0,0,0.62)",
 });
 

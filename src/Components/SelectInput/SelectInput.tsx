@@ -19,7 +19,7 @@ const StyledSelect = styled(Select)({
     fontStyle: "normal",
     lineHeight: "normal",
     width: "100%",
-    height: "48px",
+    height: "56px",
     "&.MuiInputBase-root": {
         borderRadius: "8px",
         border: "0.8px solid #494949",
@@ -34,7 +34,7 @@ const StyledSelect = styled(Select)({
         fontSize: "10px",
         border: "0.6px solid #494949",
         borderRadius: "5.6px",
-        height: "34px",
+        height: "56px",
     },
 });
 
@@ -78,7 +78,7 @@ type SelectInputProps = {
 
 const renderSelectedValue = (
     selected: string | string[],
-    options?: Option[]
+    options?: Option[],
 ): string => {
     if (Array.isArray(selected)) {
         return selected
@@ -89,7 +89,7 @@ const renderSelectedValue = (
                 return selectedOption ? selectedOption.label : "";
             })
             .join(", ");
-    } else {
+    }  else {
         const selectedOption = options?.find(
             (option) => option.value === selected
         );

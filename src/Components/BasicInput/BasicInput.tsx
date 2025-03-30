@@ -1,5 +1,5 @@
 "use client";
-import { FormControl, TextField, useMediaQuery, Theme } from "@mui/material";
+import { FormControl, TextField, useMediaQuery, Theme, styled } from "@mui/material";
 import WarningIcon from "@mui/icons-material/Warning";
 import theme from "@/theme/theme";
 
@@ -15,6 +15,22 @@ type BasicInputProps = {
     disabled?: boolean;
 };
 
+const Label = styled("label")({
+    color: " #494949",
+    fontSize: "15px",
+    fontStyle: "normal",
+    fontWeight: "500",
+    lineHeight: "normal",
+    marginBottom: "5px",
+    "&::after": {
+        content: "' *'",
+        color: " #fe645e",
+    },
+    [theme.breakpoints.down("sm")]: {
+        fontSize: "13px",
+    },
+});
+
 export const BasicInput: React.FC<BasicInputProps> = ({
     label,
     name,
@@ -28,8 +44,8 @@ export const BasicInput: React.FC<BasicInputProps> = ({
     const touchedAndError = formik.touched[name] && formik.errors[name];
     return (
         <FormControl sx={{ width: "100%" }}>
+            <Label>{label}</Label>
             <TextField
-                label={label}
                 error={!!touchedAndError}
                 variant="outlined"
                 name={name}
