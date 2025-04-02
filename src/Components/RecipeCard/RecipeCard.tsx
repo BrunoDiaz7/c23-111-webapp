@@ -180,7 +180,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               null
               :
               (
-                <StyledCardContent sx={{ padding: "0" }}>
+                <StyledCardContent sx={{ padding: "0", flexDirection: "row", gap: 2 }}>
                 <Typography variant="caption">📋 {totalSteps} pasos</Typography>
                 <Typography variant="caption">
                   🍴 {ingredients.length} ingredientes

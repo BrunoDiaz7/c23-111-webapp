@@ -9,6 +9,13 @@ export const fields: Field[] = [
     columns: 12,
   },
   {
+    name: "userId",
+    type: "id",
+    label: "User id",
+    placeholder: "id del usuario",
+    columns: 12
+  },
+  {
     name: "description",
     type: "text",
     label: "Descripción",

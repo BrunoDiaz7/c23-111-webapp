@@ -1,11 +1,13 @@
 "use client";
 import { styled, Typography, Box, useMediaQuery } from "@mui/material";
 import { useFormik } from "formik";
-import { fields } from "./_utils";
+import { fields, ValidationSchema } from "./_utils";
 import { Form, CommonButton, MainLoader, Header, RecipePreview } from "@/Components";
 import { useEffect, useState } from "react";
 import { useRecipeContext } from "@/context/recipeContext";
+import { useAuth } from "@/context/authContext";
 import theme from "@/theme/theme";
+
 
 const PageContainer = styled("main")({
   display: "flex",
@@ -35,6 +37,7 @@ const FormContainer = styled(Box)({
 
 const NewRecipePage = () => {
   const [loading, setLoading] = useState(false);
+  const {user} = useAuth();
   const { setIngredients } = useRecipeContext();
   const mdUp = useMediaQuery(() => theme.breakpoints.up("md"))
 
@@ -56,12 +59,12 @@ const NewRecipePage = () => {
     fetchRecipes();
   }, [setIngredients]);
 
-  const initialValues = Object.fromEntries(
-    fields?.map((field: any) => [field?.name, ""])
-  );
-
   const formik = useFormik({
-    initialValues,
+    initialValues: {
+      ...Object.fromEntries(fields?.map((field: any) => [field?.name, ""])),
+      userId: user?._id,
+    },
+    validationSchema: ValidationSchema,
     onSubmit: (values) => console.log(values),
   });
   return (

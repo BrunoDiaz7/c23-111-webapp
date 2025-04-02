@@ -1,7 +1,8 @@
 "use client";
 import { Container, styled, Typography } from "@mui/material";
 import Image from "next/image";
-import { AddRecipeModal } from "@/Components";
+import { CommonButton } from "@/Components";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
 
 const StyledContainer = styled(Container)({
@@ -13,6 +14,7 @@ const StyledContainer = styled(Container)({
 });
 export const EmptyRecipesContainer = () => {
     const { isAuthenticated } = useAuth();
+    const router = useRouter()
 
     return (
         <StyledContainer>
@@ -32,7 +34,11 @@ export const EmptyRecipesContainer = () => {
                     <Typography variant="h3" sx={{ color: "gray", mb: "25px" }}>
                         Puedes subir tu propia receta
                     </Typography>
-                    <AddRecipeModal />
+                    <CommonButton
+                    text="Subir receta"
+                    buttonSize="small"
+                    variant="contained"
+                    clickHandler={() => router.push("/user/new-recipe")} />
                 </>
             )}
         </StyledContainer>
