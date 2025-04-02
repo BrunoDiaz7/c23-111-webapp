@@ -5,6 +5,7 @@ import { fields } from "./_utils";
 import { Form, CommonButton, MainLoader, Header } from "@/Components";
 import { useEffect, useState } from "react";
 import { useRecipeContext } from "@/context/recipeContext";
+import theme from "@/theme/theme";
 
 const PageContainer = styled("main")({
   display: "flex",
@@ -26,6 +27,10 @@ const FormContainer = styled(Box)({
   borderRadius: "10px",
   margin: "10%",
   boxShadow: "14px 11px 14px -3px rgba(0,0,0,0.62)",
+  [theme.breakpoints.up("md")]: {
+    width: "50%"
+  }
+  
 });
 
 const NewRecipePage = () => {

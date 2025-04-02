@@ -57,7 +57,7 @@ export const ArrayInput: React.FC<ArrayInputProps> = ({
         <div className="flex">
           <TextField
             fullWidth
-            error={true}
+            error={Boolean(formik.touched[name] && formik.errors[name])}
             name={name}
             placeholder={placeholder}
             value={inputValue}

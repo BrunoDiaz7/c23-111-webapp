@@ -19,6 +19,9 @@ const StyledHeader = styled("header")(() => ({
   alignItems: "center",
   background: "#fff",
   boxShadow: "0 5px 5px rgba(0, 0, 0, 0.15)",
+  [theme.breakpoints.down("sm")]: {
+    padding: "10px",
+  }
 }));
 
 const FrameBox = styled(Box)({
@@ -56,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({ sx = {} }) => {
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
         {isAuthenticated ? (
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Typography color={theme.palette.primary.main} variant="h4">
+            <Typography sx={{[theme.breakpoints.down("sm")]: {display: "none"}}} color={theme.palette.primary.main} variant="h4">
               Hola, {user?.name}!
             </Typography>
             <UserAvatar />

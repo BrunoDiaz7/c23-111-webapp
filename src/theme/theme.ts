@@ -90,11 +90,11 @@ const customTypography = {
     },
   },
   caption:{
-    fontSize: pxToRem(12),
+    fontSize: pxToRem(13),
     color: "gray",
     fontWeight: 500,
     [theme.breakpoints.up("md")]: {
-      fontSize: pxToRem(11),
+      fontSize: pxToRem(15),
     },
   }
 };

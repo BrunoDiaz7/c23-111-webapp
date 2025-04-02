@@ -1,5 +1,6 @@
 import { Chip, Autocomplete, TextField, Stack, styled } from "@mui/material";
 import theme from "@/theme/theme";
+import {Warning} from "@mui/icons-material";
 import { useRecipeContext } from "@/context/recipeContext";
 
 const Label = styled("label")({
@@ -30,7 +31,8 @@ export const ListInput: React.FC<ListInputProps> = ({
   name,
   formik,
 }) => {
-const {ingredients} = useRecipeContext();
+  const { ingredients } = useRecipeContext();
+  const touchedAndError = formik.touched[name] && formik.errors[name];
 
   return (
     <Stack sx={{ width: "100%" }}>
@@ -62,11 +64,26 @@ const {ingredients} = useRecipeContext();
         }
         renderInput={(params) => (
           <TextField
-          {...params}
-          placeholder={placeholder}
-          error={Boolean(formik.touched[name] && formik.errors[name])}
-          helperText={formik.touched[name] && formik.errors[name]}
-        />
+            {...params}
+            placeholder={placeholder}
+            error={!!touchedAndError}
+            helperText={
+              touchedAndError ? (
+                <>
+                  <Warning
+                    sx={{
+                      verticalAlign: "middle",
+                      marginRight: "5px",
+                      fontSize: "15px",
+                    }}
+                  />
+                  <span style={{ verticalAlign: "middle" }}>
+                    {formik.errors[name]}
+                  </span>
+                </>
+              ) : null
+            }
+          />
         )}
       />
     </Stack>
