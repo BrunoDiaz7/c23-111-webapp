@@ -66,7 +66,7 @@ export const fields: Field[] = [
   },
   {
     name: "file",
-    type: "image",
+    type: "file",
     label: "Imagen",
     placeholder: "Imagen ilustrativa",
     columns: 12,

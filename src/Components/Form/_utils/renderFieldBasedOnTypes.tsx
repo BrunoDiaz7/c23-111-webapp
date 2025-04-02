@@ -1,4 +1,4 @@
-import { BasicInput, SelectInput, ArrayInput, ListInput } from "@/Components";
+import { BasicInput, SelectInput, ArrayInput, ListInput, FileUploader } from "@/Components";
 import { Field } from "@/types/form";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,6 +43,15 @@ export const renderFieldBasedOnType = (formik: any, field: Field) => {
         placeholder={field.placeholder}
         formik={formik}
         />
-      )
+      );
+      case "file":
+        return (
+          <FileUploader 
+          label={field.label}
+          name={field.name}
+          formik={formik}
+          placeholder={field.placeholder}
+          />
+        )
   }
 };

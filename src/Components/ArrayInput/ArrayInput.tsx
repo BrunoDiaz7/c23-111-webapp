@@ -1,20 +1,18 @@
 "use client";
 import { TextField, IconButton, styled } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { Delete, Add } from "@mui/icons-material";
+import { Delete, Add, Warning } from "@mui/icons-material";
 import { useState } from "react";
 import theme from "@/theme/theme";
 
 const Label = styled("label")({
-  color: " #494949",
+  color: "#494949",
   fontSize: "15px",
-  fontStyle: "normal",
   fontWeight: "500",
-  lineHeight: "normal",
   marginBottom: "5px",
   "&::after": {
     content: "' *'",
-    color: " #fe645e",
+    color: "#fe645e",
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "12px",
@@ -28,7 +26,6 @@ type ArrayInputProps = {
   placeholder: string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ArrayInput: React.FC<ArrayInputProps> = ({
   formik,
   name,
@@ -36,6 +33,7 @@ export const ArrayInput: React.FC<ArrayInputProps> = ({
   placeholder,
 }) => {
   const [inputValue, setInputValue] = useState("");
+  const touchedAndError = formik.touched[name] && formik.errors[name];
 
   const handleAddStep = () => {
     if (inputValue.trim() !== "") {
@@ -59,10 +57,33 @@ export const ArrayInput: React.FC<ArrayInputProps> = ({
         <div className="flex">
           <TextField
             fullWidth
+            error={true}
             name={name}
             placeholder={placeholder}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                handleAddStep();
+              }
+            }}
+            helperText={
+              touchedAndError ? (
+                <>
+                  <Warning
+                    sx={{
+                      verticalAlign: "middle",
+                      marginRight: "5px",
+                      fontSize: "15px",
+                    }}
+                  />
+                  <span style={{ verticalAlign: "middle" }}>
+                    {formik.errors[name]}
+                  </span>
+                </>
+              ) : null
+            }
           />
           <IconButton onClick={handleAddStep} color="primary">
             <Add />
@@ -79,7 +100,7 @@ export const ArrayInput: React.FC<ArrayInputProps> = ({
             display="flex"
             alignItems="center"
           >
-            <TextField value={step} disabled />
+            <TextField fullWidth value={step} disabled />
             <IconButton onClick={() => handleRemoveStep(index)}>
               <Delete />
             </IconButton>
