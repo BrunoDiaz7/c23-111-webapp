@@ -2,9 +2,18 @@
 import { styled, Typography, Box } from "@mui/material";
 import { useFormik } from "formik";
 import { fields } from "./_utils";
-import { Form, CommonButton, MainLoader } from "@/Components";
+import { Form, CommonButton, MainLoader, Header } from "@/Components";
 import { useEffect, useState } from "react";
 import { useRecipeContext } from "@/context/recipeContext";
+
+const PageContainer = styled("main")({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  alignItems: "center",
+  padding: 0,
+  gap: "10px",
+});
 
 const FormContainer = styled(Box)({
   display: "flex",
@@ -54,8 +63,15 @@ const NewRecipePage = () => {
       {loading ? (
         <MainLoader isOpen={loading} />
       ) : (
-        <main className="flex flex-col items-center bg-fondo min-h-screen w-full">
-          <FormContainer sx={{ marginTop: "20%" }}>
+        <PageContainer>
+          <Header sx={{ width: "100%" }} />
+          <Typography sx={{ marginTop: "2%" }} variant="h1">
+            Sube tu propia receta!
+          </Typography>
+          <Typography sx={{textAlign: "center"}} variant="h4">
+            Completa los campos y aporta a nuestra gran selección de recetas.
+          </Typography>
+          <FormContainer sx={{ marginTop: "5%" }}>
             <Form sx={{ width: "90%" }} formik={formik} fields={fields}>
               <CommonButton
                 text="Listo!"
@@ -65,7 +81,7 @@ const NewRecipePage = () => {
               />
             </Form>
           </FormContainer>
-        </main>
+        </PageContainer>
       )}
     </>
   );

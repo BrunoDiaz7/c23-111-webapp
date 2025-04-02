@@ -57,7 +57,7 @@ export const Header: React.FC<HeaderProps> = ({ sx = {} }) => {
         {isAuthenticated ? (
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <Typography color={theme.palette.primary.main} variant="h4">
-              Bienvenido, {user?.name}!
+              Hola, {user?.name}!
             </Typography>
             <UserAvatar />
           </Box>
