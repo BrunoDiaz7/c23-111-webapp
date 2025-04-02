@@ -51,7 +51,7 @@ export const BasicInput: React.FC<BasicInputProps> = ({
                 name={name}
                 type={type}
                 multiline={multiline && smUp ? true : false}
-                rows={6}
+                rows={4}
                 placeholder={placeholder}
                 fullWidth
                 disabled={disabled}

@@ -18,7 +18,8 @@ import { ArrayInput } from "./ArrayInput/ArrayInput";
 import { BackButton } from "./BackButton/BackButton";
 import { MobileFilter } from "./MobileFilter/MobileFilter";
 import { ListInput } from "./ListInput/ListInput";
-import {FileUploader} from "./FileUploader/FileUploader";
+import { FileUploader } from "./FileUploader/FileUploader";
+import { RecipePreview } from "./RecipePreview/RecipePreview";
 
 export {
   Header,
@@ -41,5 +42,6 @@ export {
   BackButton,
   MobileFilter,
   ListInput,
-  FileUploader
+  FileUploader,
+  RecipePreview,
 };

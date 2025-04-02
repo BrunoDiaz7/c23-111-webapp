@@ -56,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({ sx = {} }) => {
         </Link>
       </FrameBox>
 
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 2, [theme.breakpoints.down("sm")]: {gap: 1}}}>
         {isAuthenticated ? (
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <Typography sx={{[theme.breakpoints.down("sm")]: {display: "none"}}} color={theme.palette.primary.main} variant="h4">
