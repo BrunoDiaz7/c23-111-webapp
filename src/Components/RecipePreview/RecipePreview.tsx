@@ -6,7 +6,6 @@ import {
   List,
   ListItem,
 } from "@mui/material";
-import theme from "@/theme/theme";
 import { useState, useEffect } from "react";
 
 const PreviewContainer = styled(Box)(({ theme }) => ({
@@ -52,7 +51,7 @@ export const RecipePreview: React.FC<RecipePreviewProps> = ({ formik }) => {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   useEffect(() => {
-    //@ts-ignore
+    //@ts-expect-error no error
     if (file instanceof File) {
       const reader = new FileReader();
       reader.onloadend = () => setImagePreview(reader.result as string);

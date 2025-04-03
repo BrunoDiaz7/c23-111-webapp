@@ -27,6 +27,7 @@ export const fields: Field[] = [
         {
             name: "category",
             type: "select",
+            placeholder: "",
             label: "Categoria",
             columns: 6,
             options: category.map((category) => ({

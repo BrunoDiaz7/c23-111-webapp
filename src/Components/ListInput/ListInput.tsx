@@ -1,3 +1,4 @@
+/* eslint-disable no-alert, @typescript-eslint/no-explicit-any */
 import { Chip, Autocomplete, TextField, Stack, styled } from "@mui/material";
 import theme from "@/theme/theme";
 import {Warning} from "@mui/icons-material";

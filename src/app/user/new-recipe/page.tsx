@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable no-alert, @typescript-eslint/no-explicit-any */
 import { styled, Typography, Box, useMediaQuery } from "@mui/material";
 import { useFormik } from "formik";
 import { fields, ValidationSchema } from "./_utils";

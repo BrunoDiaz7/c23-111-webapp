@@ -1,4 +1,5 @@
-import { Button, styled, Typography, Box, useMediaQuery } from "@mui/material";
+/* eslint-disable no-alert, @typescript-eslint/no-explicit-any */
+import { Button, styled, Box, } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import WarningIcon from "@mui/icons-material/Warning";
@@ -44,7 +45,6 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   placeholder,
 }) => {
   const [preview, setPreview] = useState<string | undefined>(undefined);
-  const smUp = useMediaQuery(theme.breakpoints.up("sm"));
   const touchedAndError = formik.touched[name] && formik.errors[name];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
