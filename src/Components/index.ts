@@ -13,7 +13,6 @@ import { Footer } from "./Footer/Footer";
 import { MainLoader } from "./MainLoader/MainLoader";
 import { UserAvatar } from "./UserAvatar/UserAvatar";
 import { SelectInput } from "./SelectInput/SelectInput";
-import { AddRecipeModal } from "./AddRecipeModal/AddRecipe.Modal";
 import { ArrayInput } from "./ArrayInput/ArrayInput";
 import { BackButton } from "./BackButton/BackButton";
 import { MobileFilter } from "./MobileFilter/MobileFilter";
@@ -37,7 +36,6 @@ export {
   MainLoader,
   UserAvatar,
   SelectInput,
-  AddRecipeModal,
   ArrayInput,
   BackButton,
   MobileFilter,
