@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@/context/authContext";
 import { getRecipeByUserId } from "@/services/recipes";
 import { recipe } from "@/types/recipes";
-import { MainLoader, RecipeCard, Header, AddRecipeModal } from "@/Components";
+import { MainLoader, RecipeCard, Header, CommonButton } from "@/Components";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 import Grid from "@mui/material/Grid2";
 
 const PageContainer = styled("main")({
@@ -21,6 +22,7 @@ const UserPage = () => {
   const { user } = useAuth();
   const [userRecipes, setUserRecipes] = useState<recipe[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   const userId = user?._id;
 
@@ -52,11 +54,17 @@ const UserPage = () => {
         Has subido{" "}
         <span style={{ color: "#F48E28" }}>{userRecipes.length}</span> recetas
       </Typography>
-      <Box className='flex flex-col items-center mt-10'>
-        <Typography variant="h4" sx={{fontWeight: 500}}>
+      <Box className="flex flex-col items-center mt-10">
+        <Typography variant="h4" sx={{ fontWeight: 500 }}>
           ¿Tienes más creaciones para compartir?
         </Typography>
-        <AddRecipeModal />
+        <CommonButton
+          text="subir receta"
+          variant="contained"
+          buttonSize="small"
+          clickHandler={() => { router.push("/user/my-recipe")
+          }}
+        />
       </Box>
       {loading ? (
         <MainLoader isOpen={loading} />

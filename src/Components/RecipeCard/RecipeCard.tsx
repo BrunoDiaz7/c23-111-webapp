@@ -30,6 +30,7 @@ const StyledCardContent = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
   flex: "1 0 auto",
+  maxHeight: "200px"
 });
 
 const StyledCard = styled(Card)({
@@ -129,9 +130,10 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           sx={{
             width: "40%",
             height: "auto",
+            maxHeight: "200px",
+            objectFit: "cover",
             [theme.breakpoints.down("md")]: {
               width: "35%",
-              maxHeight: "200px"
             }
           }}
           component="img"
