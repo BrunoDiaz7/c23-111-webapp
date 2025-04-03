@@ -62,7 +62,7 @@ const UserPage = () => {
           text="subir receta"
           variant="contained"
           buttonSize="small"
-          clickHandler={() => { router.push("/user/my-recipe")
+          clickHandler={() => { router.push("/user/new-recipe")
           }}
         />
       </Box>

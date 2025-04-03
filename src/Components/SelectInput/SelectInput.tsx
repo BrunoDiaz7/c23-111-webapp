@@ -8,6 +8,7 @@ import {
     styled,
 } from "@mui/material";
 import { Option } from "@/types/form";
+import WarningIcon from "@mui/icons-material/Warning";
 
 import theme from "@/theme/theme";
 
@@ -106,6 +107,7 @@ export const SelectInput: React.FC<SelectInputProps> = ({
 }) => {
     const selectedValues = formik.values[name] || (isMultipleSelect ? [] : "");
     const selectedValueSingle = selectedValues ? selectedValues : "";
+    const touchedAndError = formik.touched[name] && formik.errors[name];
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleChange = (value: any) => {
@@ -132,7 +134,7 @@ export const SelectInput: React.FC<SelectInputProps> = ({
             <StyledSelect
                 variant="outlined"
                 name={name}
-                error={!!(formik.touched[name] && formik.errors[name])}
+                error={!!touchedAndError}
                 fullWidth
                 onBlur={formik.handleBlur}
                 onChange={(event) => handleChange(event.target.value)}
@@ -157,6 +159,21 @@ export const SelectInput: React.FC<SelectInputProps> = ({
                     </StyledMenuItem>
                 ))}
             </StyledSelect>
+                 {touchedAndError && (
+                    <div>
+                      <WarningIcon
+                        sx={{
+                          verticalAlign: "middle",
+                          marginRight: "5px",
+                          fontSize: "15px",
+                          color: "#fe645e",
+                        }}
+                      />
+                      <span style={{ color: "#fe645e", verticalAlign: "middle" }}>
+                        {formik.errors[name]}
+                      </span>
+                    </div>
+                  )}
         </FormControl>
     );
 };
