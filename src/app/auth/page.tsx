@@ -28,7 +28,7 @@ const TabsContainer = styled("ul")({
     borderRadius: "5px",
     boxShadow: "9px 9px 20px -9px rgba(0,0,0,0.39)",
     [theme.breakpoints.down("md")]:{
-        marginTop: "2%"
+        marginTop: "15%"
     }
 });
 
