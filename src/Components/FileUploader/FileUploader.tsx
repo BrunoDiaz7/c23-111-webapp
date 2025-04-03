@@ -1,8 +1,8 @@
 import { Button, styled, Typography, Box, useMediaQuery } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import DeleteIcon from "@mui/icons-material/Delete";
 import WarningIcon from "@mui/icons-material/Warning";
-import { useState, useCallback } from "react";
-import { useDropzone } from "react-dropzone";
+import { useState } from "react";
 import theme from "@/theme/theme";
 
 const VisuallyHiddenInput = styled("input")({
@@ -47,77 +47,41 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   const smUp = useMediaQuery(theme.breakpoints.up("sm"));
   const touchedAndError = formik.touched[name] && formik.errors[name];
 
-  const onDrop = useCallback(
-    (acceptedFiles: File[]) => {
-      const file = acceptedFiles[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = () => setPreview(reader.result as string);
-      reader.readAsDataURL(file);
-
-      formik.setFieldValue(name, file);
-    },
-    [formik, name]
-  );
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: { "image/png": [], "image/jpg": [], "image/jpeg": [] },
-  });
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      formik.setFieldValue(name, file);
+    const image = e.target.files?.[0]
+    if (image) {
+      formik.setFieldValue(name, image);
       const reader = new FileReader();
       reader.onload = () => setPreview(reader.result as string);
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(image);
+
     }
+  };
+
+  const handleRemoveImage = () => {
+    formik.setFieldValue(name, null);
+    setPreview(undefined);
   };
 
   return (
     <div className="flex flex-col w-full">
       <Label>{placeholder}</Label>
-
-      {smUp ? (
-        <div
-          {...getRootProps()}
-          style={{ borderColor: "#F48E28" }}
-          className="border-dashed border-2 p-4 text-center cursor-pointer"
-        >
-          <input
-            type="file"
-            accept="image/png, image/jpg, image/jpeg"
-            name={name}
-            {...getInputProps()}
-          />
-          {isDragActive ? (
-            <Typography variant="body2">Suelta los archivos aquí...</Typography>
-          ) : (
-            <Typography variant="caption">
-              Arrastra y suelta archivos aquí o haz clic para seleccionarlos
-            </Typography>
-          )}
-        </div>
-      ) : (
-        <Button
-          component="label"
-          variant="contained"
-          fullWidth
-          startIcon={<CloudUploadIcon />}
-          aria-label="Subir archivo"
-        >
-          {label}
-          <VisuallyHiddenInput
-            type="file"
-            accept="image/png, image/jpg, image/jpeg"
-            name={name}
-            onChange={handleFileChange}
-          />
-        </Button>
-      )}
-      {touchedAndError ? (
+      <Button
+        component="label"
+        variant="contained"
+        fullWidth
+        startIcon={<CloudUploadIcon />}
+        aria-label="Subir archivo"
+      >
+        {label}
+        <VisuallyHiddenInput
+          type="file"
+          accept="image/png, image/jpg, image/jpeg"
+          name={name}
+          onChange={handleFileChange}
+        />
+      </Button>
+      {touchedAndError && (
         <div>
           <WarningIcon
             sx={{
@@ -131,30 +95,47 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
             {formik.errors[name]}
           </span>
         </div>
-      ) : null}
-
-      {preview && !smUp && (
+      )}
+      {preview && (
         <Box
           sx={{
             display: "flex",
-            justifyContent: "center",
+            flexDirection: "column",
             alignItems: "center",
-            width: "280px",
-            border: "3px solid #F48E28",
-            borderRadius: "10px",
-            marginTop: "5%",
+            marginTop: "10px",
           }}
         >
-          <img
-            style={{
-              width: "95%",
-              height: "95%",
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "280px",
+              border: "3px solid #F48E28",
               borderRadius: "10px",
-              objectFit: "contain",
+              padding: "5px",
             }}
-            src={preview}
-            alt="Vista previa"
-          />
+          >
+            <img
+              style={{
+                width: "95%",
+                height: "95%",
+                borderRadius: "10px",
+                objectFit: "contain",
+              }}
+              src={preview}
+              alt="Vista previa"
+            />
+          </Box>
+          <Button
+            variant="outlined"
+            color="error"
+            startIcon={<DeleteIcon />}
+            onClick={handleRemoveImage}
+            sx={{ marginTop: "10px" }}
+          >
+            Eliminar imagen
+          </Button>
         </Box>
       )}
     </div>

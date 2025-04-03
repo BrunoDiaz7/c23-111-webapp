@@ -50,7 +50,7 @@ export const fields: Field[] = [
       },
       {
         label: "Comida rápida",
-        value: "comida rapida",
+        value: "comida rápida",
       },
     ],
     label: "Categoría",

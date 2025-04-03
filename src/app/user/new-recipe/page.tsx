@@ -2,12 +2,20 @@
 import { styled, Typography, Box, useMediaQuery } from "@mui/material";
 import { useFormik } from "formik";
 import { fields, ValidationSchema } from "./_utils";
-import { Form, CommonButton, MainLoader, Header, RecipePreview } from "@/Components";
+import {
+  Form,
+  CommonButton,
+  MainLoader,
+  Header,
+  RecipePreview,
+} from "@/Components";
 import { useEffect, useState } from "react";
 import { useRecipeContext } from "@/context/recipeContext";
 import { useAuth } from "@/context/authContext";
 import theme from "@/theme/theme";
-
+import { addRecipe } from "@/services/recipes";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const PageContainer = styled("main")({
   display: "flex",
@@ -37,9 +45,10 @@ const FormContainer = styled(Box)({
 
 const NewRecipePage = () => {
   const [loading, setLoading] = useState(false);
-  const {user} = useAuth();
+  const { user } = useAuth();
   const { setIngredients } = useRecipeContext();
-  const mdUp = useMediaQuery(() => theme.breakpoints.up("md"))
+  const router = useRouter()
+  const mdUp = useMediaQuery(() => theme.breakpoints.up("md"));
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -65,7 +74,20 @@ const NewRecipePage = () => {
       userId: user?._id,
     },
     validationSchema: ValidationSchema,
-    onSubmit: (values) => console.log(values),
+    onSubmit: async (values) => {
+      try {
+        setLoading(true);
+        const response = await addRecipe(values);
+        if (response.status === 201) {
+          toast.success("Receta añadida con éxito!");
+          router.push("/user/my-recipes")
+        }
+      } catch (error) {
+        toast.error(`Ocurrió un error al subir la receta ${error}`);
+      } finally {
+        setLoading(false);
+      }
+    },
   });
   return (
     <>
@@ -80,7 +102,7 @@ const NewRecipePage = () => {
           <Typography sx={{ textAlign: "center" }} variant="h4">
             Completa los campos y aporta a nuestra gran selección de recetas.
           </Typography>
-          <Box sx={{display: "flex",}}>
+          <Box sx={{ display: "flex" }}>
             <FormContainer>
               <Form sx={{ width: "90%" }} formik={formik} fields={fields}>
                 <CommonButton

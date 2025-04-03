@@ -30,14 +30,32 @@ export const getRatesById = async (id: string | undefined) => {
 }
 
 export const addRecipe = async (recipe: createRecipe) => {
-    const data = JSON.stringify(recipe);
-    try {
-        const response = await privateInstance.post('/recipes', data);
-        return response.data.result;
-    } catch(error) {
-        throw error
+    const formData = new FormData();
+    
+    formData.append("name", recipe.name);
+    formData.append("description", recipe.description);
+    formData.append("userId", recipe.userId);
+    
+    recipe.category.forEach(item => formData.append("category[]", item));
+    recipe.ingredients.forEach(item => formData.append("ingredients[]", item));
+    recipe.steps.forEach(item => formData.append("steps[]", item));
+
+    if (recipe.file) {
+        formData.append("file", recipe.file);
     }
-}
+
+    try {
+        const response = await privateInstance.post('/recipes', formData, {
+            headers: {
+                "Content-Type": "multipart/form-data", // Opcional, Axios lo asigna automáticamente
+            },
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
+
 
 export const getRecipeByUserId = async (id: string) => {
     try {
