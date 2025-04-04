@@ -1,3 +1,4 @@
+/* eslint-disable no-alert, @typescript-eslint/no-explicit-any */
 import { TextField, IconButton, styled } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { Delete, Add, Edit, Save, Warning } from "@mui/icons-material";
