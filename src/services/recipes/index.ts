@@ -47,7 +47,7 @@ export const addRecipe = async (recipe: createRecipe) => {
     try {
         const response = await privateInstance.post('/recipes', formData, {
             headers: {
-                "Content-Type": "multipart/form-data", // Opcional, Axios lo asigna automáticamente
+                "Content-Type": "multipart/form-data", 
             },
         });
         return response;
